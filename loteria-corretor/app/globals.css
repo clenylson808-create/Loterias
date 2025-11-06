@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --loteria-primary: #049645;
+  --loteria-secondary: #0066b3;
+}
+
+body {
+  @apply bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen;
+}
+
+/* Animações customizadas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Scrollbar customizada */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-200;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-loteria-primary rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-loteria-secondary;
+}
+
+/* Efeito de brilho nas bolas */
+.bola-loteria {
+  position: relative;
+  overflow: hidden;
+}
+
+.bola-loteria::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 70%
+  );
+  transform: rotate(45deg);
+}
